@@ -63,6 +63,30 @@ public class PictureTester
       temple.explore();
    }   
    
+   public static void testMirrorRightLeft() {
+      Picture temple = new Picture("caterpillar.jpg");
+      temple.mirrorVerticalRightToLeft();
+      temple.explore();
+   }   
+   
+   public static void testMirrorHorizontal() {
+      Picture temple = new Picture("redMotorcycle.jpg");
+      temple.mirrorHorizontal();
+      temple.explore();
+   }   
+   
+   public static void testMirrorHorizontalBotToTop() {
+      Picture temple = new Picture("redMotorcycle.jpg");
+      temple.mirrorHorizontalBotToTop();
+      temple.explore();
+   }
+   
+   public static void testMirrorDiagonal() {
+      Picture temple = new Picture("beach.jpg");
+      temple.mirrorDiagonal();
+      temple.explore();
+   }
+   
    /** Main method for testing.  Every class can have a main
      * method in Java */
    public static void main(String[] args)
@@ -70,7 +94,7 @@ public class PictureTester
       // uncomment a call here to run a test
       // and comment out the ones you don't want
       // to run
-      testNegate();
+      testMirrorDiagonal();
       //testKeepOnlyBlue();
       //testKeepOnlyBlue();
       //testKeepOnlyRed();
