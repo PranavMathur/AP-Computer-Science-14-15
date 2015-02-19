@@ -63,6 +63,18 @@ public class PictureTester
       temple.explore();
    }   
    
+   public static void testGrayscale() {
+      Picture swan = new Picture("swan.jpg");
+      swan.grayscale();
+      swan.explore();
+   }  
+   
+   public static void testFixUnderwater() {
+      Picture swan = new Picture("water.jpg");
+      swan.fixUnderwater();
+      swan.explore();
+   }   
+   
    public static void testMirrorRightLeft() {
       Picture temple = new Picture("caterpillar.jpg");
       temple.mirrorVerticalRightToLeft();
@@ -94,14 +106,12 @@ public class PictureTester
       // uncomment a call here to run a test
       // and comment out the ones you don't want
       // to run
-      testMirrorDiagonal();
-      //testKeepOnlyBlue();
       //testKeepOnlyBlue();
       //testKeepOnlyRed();
       //testKeepOnlyGreen();
       //testNegate();
       //testGrayscale();
-      //testFixUnderwater();
+      testFixUnderwater();
       //testMirrorVertical();
       //testMirrorTemple();
       //testMirrorArms();

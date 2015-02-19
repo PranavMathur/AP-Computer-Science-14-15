@@ -25,6 +25,7 @@ public class Picture extends SimplePicture
       /* not needed but use it to show students the implicit call to super()
        * child constructors always call a parent constructor 
        */
+       
       super();  
    }
    
@@ -130,12 +131,25 @@ public class Picture extends SimplePicture
          for (Pixel pixelObj : rowArray)
          {
             int avg = (pixelObj.getBlue()+pixelObj.getRed()+pixelObj.getGreen())/3;
-            pixelObj.setRed(255 - pixelObj.getRed());
-            pixelObj.setGreen(255 - pixelObj.getGreen());
-            pixelObj.setBlue(255 - pixelObj.getBlue());
+            pixelObj.setRed(avg);
+            pixelObj.setGreen(avg);
+            pixelObj.setBlue(avg);
          }
       }
    } 
+   
+   public void fixUnderwater() {
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+         for (Pixel pixelObj : rowArray)
+         {
+            pixelObj.setRed(pixelObj.getRed()*6);
+            //pixelObj.setGreen(0);
+            //pixelObj.setBlue(0);
+         }
+      }
+   }
    
    /** Method that mirrors the picture around a 
      * vertical mirror in the center of the picture
@@ -220,7 +234,7 @@ public class Picture extends SimplePicture
             newPixel.setColor(originalPixel.getColor());
          }
       }
-   }            
+   }  
    
    /** Mirror just part of a picture of a temple */
    public void mirrorTemple()
