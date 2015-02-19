@@ -97,7 +97,21 @@ public class PictureTester
       Picture temple = new Picture("beach.jpg");
       temple.mirrorDiagonal();
       temple.explore();
-   }
+   }  
+   
+   public static void testMirrorArms() {
+      Picture temple = new Picture("snowman.jpg");
+      temple.explore();
+      temple.mirrorArms();
+      temple.explore();
+   }   
+   
+   public static void testMirrorSeagull() {
+      Picture temple = new Picture("seagull.jpg");
+      temple.explore();
+      temple.mirrorSeagull();
+      temple.explore();
+   }   
    
    /** Main method for testing.  Every class can have a main
      * method in Java */
@@ -111,10 +125,9 @@ public class PictureTester
       //testKeepOnlyGreen();
       //testNegate();
       //testGrayscale();
-      testFixUnderwater();
+      //testFixUnderwater();
       //testMirrorVertical();
-      //testMirrorTemple();
-      //testMirrorArms();
+      testMirrorSeagull();
       //testMirrorGull();
       //testMirrorDiagonal();
       //testCollage();
