@@ -334,6 +334,30 @@ public class Picture extends SimplePicture
          }
       }   
    }
+   
+   public void copy(Picture fromPic, 
+                  int startRow, int startCol, int fromStartRow, int fromStartCol, int fromEndRow, int fromEndCol)
+   {
+      Pixel fromPixel = null;
+      Pixel toPixel = null;
+      Pixel[][] toPixels = this.getPixels2D();
+      Pixel[][] fromPixels = fromPic.getPixels2D();
+      for (int fromRow = fromStartRow, toRow = startRow; 
+            fromRow < fromEndRow &&
+            toRow < toPixels.length; 
+            fromRow++, toRow++)
+      {
+         for (int fromCol = fromStartCol, toCol = startCol; 
+               fromCol < fromEndCol &&
+               toCol < toPixels[0].length;  
+               fromCol++, toCol++)
+         {
+            fromPixel = fromPixels[fromRow][fromCol];
+            toPixel = toPixels[toRow][toCol];
+            toPixel.setColor(fromPixel.getColor());
+         }
+      }   
+   }
 
    /** Method to create a collage of several pictures */
    public void createCollage()
@@ -352,11 +376,24 @@ public class Picture extends SimplePicture
       this.write("collage.jpg");
    }
    
+   public void myCollage() {
+      Picture a = new Picture("caterpillar.jpg");
+      copy(a, 0, 0);
+      Picture aNegated = new Picture(a);
+      aNegated.negate();
+      copy(aNegated, 200, 0);
+      Picture aMirrored = new Picture(a);
+      aMirrored.mirrorDiagonal();
+      copy(aMirrored, 400, 0);
+      mirrorVertical();
+      write("myCollage.jpg");
+   }   
+   
    
    /** Method to show large changes in color 
      * @param edgeDist the distance for finding edges
      */
-   public void edgeDetection(int edgeDist)
+  public void edgeDetection(int edgeDist)
    {
       Pixel leftPixel = null;
       Pixel rightPixel = null;
@@ -375,6 +412,24 @@ public class Picture extends SimplePicture
                leftPixel.setColor(Color.BLACK);
             else
                leftPixel.setColor(Color.WHITE);
+         }
+      }
+      Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      Color bottomColor = null;
+      for (int row = 0; row < pixels.length-1; row++)
+      {
+         for (int col = 0; 
+               col < pixels[0].length; col++)
+         {
+            topPixel = pixels[row][col];
+            bottomPixel = pixels[row+1][col];
+            bottomColor = bottomPixel.getColor();
+            if (topPixel.colorDistance(bottomColor) > 
+                 edgeDist)
+               topPixel.setColor(Color.BLACK);
+            else
+               topPixel.setColor(Color.WHITE);
          }
       }
    }

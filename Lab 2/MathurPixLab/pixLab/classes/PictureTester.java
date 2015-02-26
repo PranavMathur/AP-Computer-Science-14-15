@@ -113,6 +113,19 @@ public class PictureTester
       temple.explore();
    }   
    
+   public static void testCopy() {
+      Picture a = new Picture("640x480.jpg");
+      Picture b = new Picture("flower1.jpg");
+      a.copy(b, 0, 0, 0, 0, 50, 50);
+      a.explore();
+   }   
+   
+   public static void testMyCollage() {
+      Picture a = new Picture("640x480.jpg");
+      a.myCollage();
+      a.explore();
+   }   
+   
    /** Main method for testing.  Every class can have a main
      * method in Java */
    public static void main(String[] args)
@@ -127,11 +140,12 @@ public class PictureTester
       //testGrayscale();
       //testFixUnderwater();
       //testMirrorVertical();
-      testMirrorSeagull();
+      //testMirrorSeagull();
       //testMirrorGull();
       //testMirrorDiagonal();
       //testCollage();
       //testCopy();
+      testMyCollage();
       //testEdgeDetection();
       //testEdgeDetection2();
       //testChromakey();
